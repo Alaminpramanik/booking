@@ -13,9 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import os
 from db import *
 from pathlib import Path
-from corsheaders.defaults import default_headers
-from django.contrib.auth import get_user_model
-from celery.schedules import crontab
 import datetime
 
 
@@ -33,7 +30,7 @@ SECRET_KEY = 'django-insecure-rl-3!i#z%i7ra4vvo6bqa#g^4ku-%4k(yy#+fjce=eh&suud(9
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
-AUTH_USER_MODEL = 'user.User'
+
 
 # Application definition
 
@@ -44,14 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
-    'rest_framework',
-    'rest_framework.authtoken',
-    'rest_auth',
-    'django_celery_beat',
-    'django_celery_results',
-
-    'user',
+  
     'contact',
 ]
 
@@ -59,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -88,17 +78,23 @@ WSGI_APPLICATION = 'booking.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': DB_ENGINE,
-        'NAME': DB_NAME,
-        'USER': DB_USER,
-        'HOST': DB_HOST,
-        'PORT': DB_PORT,
-        'PASSWORD': DB_PASSWORD,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': DB_ENGINE,
+#         'NAME': DB_NAME,
+#         'USER': DB_USER,
+#         'HOST': DB_HOST,
+#         'PORT': DB_PORT,
+#         'PASSWORD': DB_PASSWORD,
+#     }
+# }
 
 
 # Password validation
@@ -142,45 +138,18 @@ STATIC_URL = '/django_static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'django_static')
 
 
-
-MEDIA_URL = os.path.join(HOME_DIR, 'media/')
-
-MEDIA_ROOT = os.path.join(HOME_DIR, 'media/')
-
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_COOKIE_NAME = "csrftoken"
 
-CORS_ALLOW_HEADERS = default_headers + (
-    'Access-Control-Allow-Origin',
-)
-
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
-]
-
-rabbitmq_url = 'amqp://booking_superman:booking_superman@rabbitmq:5672//'
-CELERY_BROKER_URL = rabbitmq_url
-# CELERY_RESULT_BACKEND = rabbitmq_url
-# CELERY_RESULT_BACKEND = 'redis://redis:6379'
-CELERY_RESULT_BACKEND = 'django-db'
-CELERY_CACHE_BACKEND = 'default'
-CELERY_DEFAULT_QUEUE = 'default'
-
-
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Makassar'
-CELERY_BEAT_SCHEDULE = {}
 
 # Email SMTP Server Permission 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'alamin493641@gmail.com.com'
-EMAIL_HOST_PASSWORD = '@2alaminpram'
+EMAIL_HOST_USER = 'alamin493641@gmail.com'
+EMAIL_HOST_PASSWORD = '@2alaminpramanik'
 EMAIL_PORT = 587
 
 

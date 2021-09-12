@@ -1,8 +1,11 @@
-from django.urls import path, include
+from django.urls import path
 
-from . import views
+
+from .views import   car
 
 urlpatterns = [
-    path('', views.UserRegistrationApiView.as_view(), name='contact-form'),
-         
+    # path('cars/', CarBooked.as_view(), name='car-form'),
+   
+    path('car/', car, name='carbooking'),
+    # path('/name/', StylishDetailView.as_view(), name='list'),
 ]
