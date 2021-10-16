@@ -1,6 +1,4 @@
 <html>
-    {% block content %}
-
     <head>
         <title>car book</title>
         <meta charset="utf-8">
@@ -17,7 +15,7 @@
             <div class="menu">
                 <ul>
 					<li><a href="car.html">Car Booking</a></li>
-					<li><a href="/">Admin</a></li>
+					<li><a href="curier.html">admin</a></li>
 				</ul>
             </div>
         </div>
@@ -27,38 +25,22 @@
         <div class="contact-form section-gap">
           <div class="wrapper">
             <div class="text-center">
-            <h1 style="font-size: 40px; " >Booking Form</h1>
+            <h1 style="font-size: 40px; " >Admin Login</h1>
           </div>
             <div class="contact-form" style="max-width: 450px; margin: 0 auto;">
               <div class="form-mid">
-                <form action="." method="POST">
-                    <div class="field">
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-                    </div>
+                <form action="javascript:sendmail()" method="post">
                     <div class="field">
                         <input type="text" class="form-control" name="username" id="username" placeholder="username" required="">
                     </div>
                     <div class="field">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email"
-                        required="">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="email" required="">
                     </div>
                     <div class="field">
-                        <input type="number" class="form-control" name="number" id="number" placeholder="Phone Number" required="">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="password" required="">
                     </div>
-                    <div class="field">
-                        <input type="text" class="form-control" name="pickup" id="pickup" placeholder="pickup" required="">
-                    </div>
-                    <div class="field">
-                        <input type="text" class="form-control" name="message" id="message" placeholder="message"
-                        required="">
-                    </div>
-                    <!-- <div class="field">
-                        <input type="date" class="form-control" name="date" id="date"required="">
-                    </div>
-                    <div class="field">
-                        <input type="time" class="form-control" name="time" id="time"required="">
-                    </div> -->
-                    <button type="submit" class="btn btn-contact">Send Message</button>
+                    
+                    <button type="submit" class="btn btn-contact">Login</button>
                     <!-- <input type="button" class="btn btn-contact" onclick="sendmail();"  value="Send Message"> -->
     
                 </form>
@@ -77,5 +59,15 @@
             </div>
 
     </footer>
-    {% endblock content %}
+    <div>
+        {% for object in objects%}
+            <h1>{{object.subject}}</h1></br>
+                {{object.username}}</br>
+                {{object.email}}</br>
+                {{object.number}}</br>
+                {{object.pickup}}</br>
+                {{object.message}}
+        {% endfor %}
+        </div>
+</body>
 </html>

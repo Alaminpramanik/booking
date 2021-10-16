@@ -131,31 +131,19 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-HOME_DIR = os.path.realpath(os.path.join(BASE_DIR, '..'))
+# https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/django_static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'django_static')
-
-
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_COOKIE_NAME = "csrftoken"
+STATIC_URL = '/static/'
 
 
 # Email SMTP Server Permission 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'alamin493641@gmail.com'
-EMAIL_HOST_PASSWORD = '@2alaminpramanik'
+EMAIL_HOST_USER = 'poroshpramanik@gmail.com'
+EMAIL_HOST_PASSWORD = '01980010670'
 EMAIL_PORT = 587
 
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
