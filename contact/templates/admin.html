@@ -14,8 +14,8 @@
             </div>
             <div class="menu">
                 <ul>
-					<li><a href="car.html">Car Booking</a></li>
-					<li><a href="curier.html">admin</a></li>
+					<li><a href="{% url 'carbooking' %}">Car Booking</a></li>
+					<li><a href="{% url 'admin' %}">admin</a></li>
 				</ul>
             </div>
         </div>
@@ -33,9 +33,9 @@
                     <div class="field">
                         <input type="text" class="form-control" name="username" id="username" placeholder="username" required="">
                     </div>
-                    <div class="field">
+                    <!-- <div class="field">
                         <input type="email" class="form-control" name="email" id="email" placeholder="email" required="">
-                    </div>
+                    </div> -->
                     <div class="field">
                         <input type="password" class="form-control" name="password" id="password" placeholder="password" required="">
                     </div>
