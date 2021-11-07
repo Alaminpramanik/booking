@@ -1,0 +1,49 @@
+{% block content %}
+<html>
+    
+
+    <head>
+        <title>car book</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/css/style.css"> 
+        <link rel="stylesheet" href="../static/css/mobile.css"> 
+    </head>
+<body>
+    <div class="header" id="header">
+        <div class="nav-bar">
+            <div class="logo">
+                <a href="#">Concern</a>
+            </div>
+            <div class="menu">
+                <ul>
+					<li><a href="car.html">Car Booking</a></li>
+					<li><a href="">Admin</a></li>
+				</ul>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="text-align: center;">
+        
+        <form method="POST">
+        {% csrf_token %}
+            <input type="text"  class="fadeIn second" name="username" placeholder="login">
+            <input type="password"  class="fadeIn third" name="password" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+           
+        </form>
+       
+    </div>
+
+    <footer>
+      
+        <div class="row" style="text-align: center;">
+            
+            <p style="color: white;">Concern curieer Sservice and car booking</p>
+            
+        </div>
+
+</footer>
+</body>
+</html>
+{% endblock %}

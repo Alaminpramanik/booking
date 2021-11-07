@@ -9,9 +9,5 @@ class CarBookingForm(forms.ModelForm):
         
 
 
-class LoginForm(forms.Form):
-    class Meta:
-    model=User
-    fields = ['subject','name', 'email', 'number', 'pickup_location', 'meassage']
 
    
