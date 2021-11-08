@@ -1,0 +1,47 @@
+<html>
+    {% block content %}
+
+    <head>
+        <title>car book</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/css/style.css"> 
+        <link rel="stylesheet" href="../static/css/mobile.css"> 
+    </head>
+<body>
+    <div class="header" id="header">
+        <div class="nav-bar">
+            <div class="logo">
+                <a href="#">Concern</a>
+            </div>
+            <div class="menu">
+                <ul>
+					<li><a href="">Car Booking</a></li>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Dropdown button
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">Admin</a>
+                          <a class="dropdown-item" href="#">Manager</a>
+                        </div>
+                      </div>
+					
+				</ul>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <footer>
+      
+            <div class="row" style="text-align: center;">
+                
+                <p style="color: white;">Concern curieer Sservice and car booking</p>
+                
+            </div>
+
+    </footer>
+    {% endblock content %}
+</html>

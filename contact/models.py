@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 class CarBooking(models.Model):
+    # id = models.BigAutoField(primary_key=True)
     subject = models.CharField(max_length=300, blank=True)
     username = models.CharField(max_length=300, blank=True)
     email = models.EmailField(max_length=100, blank=True )

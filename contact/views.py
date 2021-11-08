@@ -1,69 +1,81 @@
-from django.shortcuts import redirect, render, get_list_or_404, get_object_or_404
-
-from django.http import  HttpResponse, request
-from django.shortcuts import render 
-from django.http import HttpResponseRedirect
-
-from .models import CarBooking
-# from .forms import CarBookingForm
-from django.views import View
+from django.shortcuts import  render, get_list_or_404, get_object_or_404
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.mail import BadHeaderError, send_mail
 from django.conf import settings
-from django.views.generic.base import TemplateView
+from django.contrib.auth import authenticate, login
+from .models import CarBooking
+# from .form import SomeForm
+from django.contrib.auth.decorators import login_required
+
+def AdLogin(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/list/')
+            ...
+        else:
+            messages.success(request, ('the login error try again login'))
+            return redirect('login')
+    else:    
+        return render(request, 'login.html', {})
+
+def MLogin(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/list/')
+            ...
+        else:
+            messages.success(request, ('the login error try again login'))
+            return redirect('login')
+    else:    
+        return render(request, 'manager.html', {})
 
 
-# def CarBooking(request):
-#     if request.method == 'GET':
-#         form = CarBookingForm()
-#     else:
-#         form = CarBookingForm(request.POST)
-#         if form.is_valid():
-#             subject = form.cleaned_data['subject']
-#             email = form.cleaned_data['email']
-#             description = form.cleaned_data['description']
-#             name = form.cleaned_data['name']
-#             pickup_location = form.cleaned_data['pickup_location']
-#             number = form.cleaned_data['number']
-#             try:
-#                 send_mail(subject, name, pickup_location, number, subject, description, email, ['alamin4936412gmail.com'])
-#             except BadHeaderError:
-#                 return HttpResponse('Invalid header found.')
-#             return redirect('thanks')
-#     return render(request, "car.html", {'form': form})
+@login_required(redirect_field_name='bookinglist')
+def BookingList(request):
+    list = CarBooking.objects.all()
+
+    return render(request, 'list.html', {'lists':list }) 
+
+@login_required(redirect_field_name='bookingview')
+def BookingView(request, id=None):
+    list = CarBooking.objects.all()
+    print('fff', list)
+    obj = get_list_or_404(CarBooking, id=id)
     
-
-# class CarBooked(View):
-#     form_class = CarBookingForm
-#     template_name = 'car.html'
-#     def get(self, request, *args, **kwargs):
+    # try:
+    #     subject = subject
+    #     message = 'Userame '+ username + " number " + number +"pickup " + pickup + ""
+    #     email_from = settings.EMAIL_HOST_USER
+    #     send_mail(subject, message, email_from, [email])
         
-#         return render(request, self.template_name)
+    # except:
+    #     # print('email not send')
+    #     message.error(request, 'Feedback Saved but not send to admin.')
+    
+    return render(request, 'views.html', {'objects':obj})
 
-#     def post(self, request, *args, **kwargs):
-#         subject = request.POST.get('subject')
-#         name = request.POST.get('name')
-#         email = request.POST.get('email')
-#         number = request.POST.get('number')
-#         pickup_location = request.POST.get('pickup_location')
-#         description = request.POST.get('description')
-#         # print(name, email, number, pickup_location, description)
-      
-#         send_mail(
-#             subject,
-#             email,
-#             name,
-#             number,
-#             pickup_location,
-#             description,
-#             ['alamin493641@gmail.com'],
-            
-#         )
+@login_required(redirect_field_name='bookingview')
+def AdminView(request, id=None):
+    print(id)
+    obj = get_list_or_404(CarBooking, id=id)
 
-#         return render(request, self.template_name, {'form': form})
+    context = {
+        'objects': obj,
+    }
+    template = 'views.html'
+    return render(request, template, context)
 
 def car(request):
     status = CarBooking.objects.all()
-  
     if request.method == 'POST':
         subject = request.POST["subject"]
         username = request.POST["username"]
@@ -77,15 +89,21 @@ def car(request):
                                 email=email, number=number,
                                   pickup=pickup, message=message)
         obj.save()
-        try:
-            subject = subject
-            message = 'Userame '+ username + "number " + number +"pickup " + pickup + ""
-            email_from = settings.EMAIL_HOST_USER
-            send_mail(subject, message, email_from, [email])
+        # try:
+        #     subject = subject
+        #     message = 'Userame '+ username + " number " + number +"pickup " + pickup + ""
+        #     email_from = settings.EMAIL_HOST_USER
+        #     send_mail(subject, message, email_from, [email])
            
-        except:
-            message.error(request, 'Feedback Saved but not send to admin.')
+        # except:
+        #     # print('email not send')
+        #     message.error(request, 'Feedback Saved but not send to admin.')
+        return HttpResponseRedirect('/list/')
     context = {
         'status': status
     }
     return render(request, 'car.html', context)
+
+
+
+

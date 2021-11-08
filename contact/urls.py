@@ -1,11 +1,14 @@
 from django.urls import path
+from django.contrib.auth.views import LoginView
 
-
-from .views import   car
+from .views import  car,BookingList, BookingView, AdminView, AdLogin, MLogin
 
 urlpatterns = [
-    # path('cars/', CarBooked.as_view(), name='car-form'),
-   
-    path('car/', car, name='carbooking'),
-    # path('/name/', StylishDetailView.as_view(), name='list'),
+    # path('login/', LoginView.as_view()),
+    path('list/', BookingList, name='bookinglist'),
+    path('list/<int:id>/', BookingView, name='bookingview'),
+    path('adminsign/', AdLogin, name='adminsign'),
+    path('msign/', MLogin, name='msign'),
+    path('adminv/', AdminView, name='adminv'),
+    path('', car, name='carbooking'),
 ]

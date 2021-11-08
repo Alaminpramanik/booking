@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>car book</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/style.css"> 
+        <link rel="stylesheet" href="/static/css/mobile.css"> 
+    </head>
+<body>
+    <div class="header" id="header">
+        <div class="nav-bar">
+            <div class="logo">
+                <a href="/">Concern</a>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 10px; text-align: center;">
+
+        {% for object in objects%}
+        <ul class="list-group" style="text-align: center;" >
+            <li class="list-group-item">{{object.subject}}</li> </br>
+            <li class="list-group-item">{{object.username}}</li></br>
+            <li class="list-group-item">{{object.email}}</li></br>
+            <li class="list-group-item">{{object.number}}</li></br>
+            <li class="list-group-item">{{object.pickup}}</li></br>
+            <li class="list-group-item">{{object.message}}</li>
+        </ul>
+        {% endfor %}
+        <button type="submit" class="btn btn-contact">Approved</button>
+        <button type="submit" class="btn btn-contact">Ignore</button>
+    </div>
+    
+
+    <footer>
+      
+            <div class="row" style="text-align: center;">
+                
+                <p style="color: white;">Concern curieer Sservice and car booking</p>
+                
+            </div>
+
+    </footer>
+    
+</body>
+</html>

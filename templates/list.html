@@ -1,0 +1,50 @@
+<html>
+    {% block content %}
+    <head>
+        <title>car book</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/style.css"> 
+        <link rel="stylesheet" href="/static/css/mobile.css"> 
+    </head>
+<body>
+    <div class="header" id="header">
+        <div class="nav-bar">
+            <div class="logo">
+                <a href="#">Concern</a>
+            </div>
+            <div class="menu">
+                <ul>
+					<li><a href="car.html">Car Booking</a></li>
+					<li><a href="">Admin</a></li>
+				</ul>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 10px;">
+        {% for list in lists%}
+        <ul class="list-group" style="text-align: center;" >
+          <li class="list-group-item"><a style="color:rgb(226, 4, 4)" href="{{list.id}}">{{list}}</a></li>
+        </ul>
+        {% endfor%}
+      </div>
+    <div>
+        <ul>
+            <li>
+           
+            
+            <a  href="{{list.id}}"></a>
+            
+           
+            </li>
+        </ul>
+    </div>
+    <footer>
+      
+        <div class="row" style="text-align: center;">
+            <p style="color: white;">Concern curieer Sservice and car booking</p>
+        </div>
+
+    </footer>
+    {% endblock content %}
+</html>
