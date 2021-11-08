@@ -32,20 +32,20 @@ def BookingList(request):
     return render(request, 'list.html', {'lists':list }) 
 
 @login_required(redirect_field_name='bookingview')
-def BookingView(request, id=None):
-    list = CarBooking.objects.all()
-    print('fff', list)
+def BookingView(request, id=None, email=None):
+    # list = CarBooking.objects.all()
+    # print('fff', list)
     obj = get_list_or_404(CarBooking, id=id)
-    
-    try:
-        subject = subject
-        message = 'Userame '+ username + " number " + number +"pickup " + pickup + ""
-        email_from = settings.EMAIL_HOST_USER
-        send_mail(subject, message, email_from, [email])
+   
+    # try:
+    #     subject = subject
+    #     message = 'Userame '+ username + " number " + number +"pickup " + pickup + ""
+    #     email_from = settings.EMAIL_HOST_USER
+    #     send_mail(subject, message, email_from, [email])
         
-    except:
-        # print('email not send')
-        message.error(request, 'Feedback Saved but not send to admin.')
+    # except:
+    #     # print('email not send')
+    #     message.error(request, 'Feedback Saved but not send to admin.')
     
     return render(request, 'views.html', {'objects':obj})
 
