@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="/static/css/style.css"> 
         <link rel="stylesheet" href="/static/css/mobile.css"> 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     </head>
 <body>
     <div class="header" id="header">
@@ -16,21 +17,27 @@
         </div>
     </div>
 
-    <div class="row" style="margin-top: 10px; text-align: center;">
-
-        {% for object in objects%}
-        <ul class="list-group" style="text-align: center;" >
-            <li class="list-group-item">{{object}}</li> </br>
-            <li class="list-group-item">{{object.username}}</li></br>
-            <li class="list-group-item">{{object.email}}</li></br>
-            <li class="list-group-item">{{object.number}}</li></br>
-            <li class="list-group-item">{{object.pickup}}</li></br>
-            <li class="list-group-item">{{object.message}}</li>
-        </ul>
-        {% endfor %}
-        <button type="submit" class="btn btn-contact">Approved</button>
+    {% if objects%}
+    {% for object in objects%}
+    <div class="row" style="margin-top: 10px; text-align: center; " >
+        {% csrf_token %}
+        
+            
+            <ul class="list-group" style="text-align: center;" >
+                <div class="list-group-item subject">{{object.subject}}</div> 
+                <div class="list-group-item username">{{object.username}}</div> 
+                <div class="list-group-item email">{{object.email}}</div> 
+                <div class="list-group-item number">{{object.number}}</div> 
+                <div class="list-group-item pickup">{{object.pickup}}</div> 
+                <div class="list-group-item message">{{object.message}}</div> 
+            </ul>
+            
+        
+        <button type="submit" id="forward" value="Submit"  class="btn btn-contact">Forward</button>
         
     </div>
+    {% endfor %}
+    {% endif %}
     
 
     <footer>
@@ -42,6 +49,10 @@
             </div>
 
     </footer>
-    
+
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/jquery-3.5.1.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
 </body>
 </html>

@@ -30,7 +30,8 @@
           </div>
             <div class="contact-form" style="max-width: 450px; margin: 0 auto;">
               <div class="form-mid">
-                <form action="javascript:sendmail()" method="post">
+                <form method="post" action="">
+                    {% csrf_token %}
                     <div class="field">
                         <input type="text" class="form-control" name="username" id="username" placeholder="username" required="">
                     </div>
