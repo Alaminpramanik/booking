@@ -1,23 +1,35 @@
-$("#forward").click(function(){
-    subject= $(".subject").val();
-    username= $(".username").val();
-    email= $(".email").val();
-    number= $(".number").val();
-    pickup= $(".pickup").val();
-    message= $(".message").val();
+$("#approved").click(function(){
+//   var EmpName = $("div#subject div#approved").attr('class');
+//   console.log('dfd', EmpName)
+// // Undefined check
+//   if (Object.prototype.toString.call(EmpName) === '[object Undefined]'){
+//     subject= $(".subject").values
+//     console.log('ffff',subject)
+//   }
+      // sub= document.querySelector(".subject")
+    // subject=document.getElementsByClassName(subject).HTMLCollection
+    // document.querySelector('*');
+    // subject= $(".subject").innerHTML
+    // subject= $(".subject").querySelector
+    subject= document.querySelector('#subject').innerText
+    // username= $(".username").val();
+    // email= $(".email").val();
+    // number= $(".number").val();
+    // pickup= $(".pickup").val();
+    // message= $(".message").val();
 
     console.log('ffff',subject)
     
-    // let forward_data = { 
-    //     'subject':subject,
-    //     'username': username,
-    //     'email':email,
-    //     'number': number,
-    //     'pickup':pickup,
-    //     'message': message,
-    //   }
-    //   console.log(forward_data)
-    // //   SendAjax(forward_data);
+    let forward_data = { 
+        'subject':subject,
+        // 'username': username,
+        // 'email':email,
+        // 'number': number,
+        // 'pickup':pickup,
+        // 'message': message,
+      }
+      console.log(forward_data)
+    //   SendAjax(forward_data);
 
 });
 

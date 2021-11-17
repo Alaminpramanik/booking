@@ -24,7 +24,7 @@
         
             
             <ul class="list-group" style="text-align: center;" >
-                <div class="list-group-item subject">{{object.subject}}</div> 
+                <span class="list-group-item subject" id='subject'>{{object.subject}}</span> 
                 <div class="list-group-item username">{{object.username}}</div> 
                 <div class="list-group-item email">{{object.email}}</div> 
                 <div class="list-group-item number">{{object.number}}</div> 
@@ -32,8 +32,7 @@
                 <div class="list-group-item message">{{object.message}}</div> 
             </ul>
             
-        
-        <button type="submit" id="forward" value="Submit"  class="btn btn-contact">Forward</button>
+        <button type="submit" id="approved" value="Submit"  class="btn btn-contact">Approved</button>
         
     </div>
     {% endfor %}
